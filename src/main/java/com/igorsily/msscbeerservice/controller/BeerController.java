@@ -3,6 +3,7 @@ package com.igorsily.msscbeerservice.controller;
 import com.igorsily.msscbeerservice.model.BeerDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -18,13 +19,13 @@ public class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> saveBeer(@RequestBody BeerDTO beerDTO) {
+    public ResponseEntity<Void> saveBeer(@Validated @RequestBody BeerDTO beerDTO) {
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/{beerId}")
-    public ResponseEntity<Void> updateBeer(@PathVariable("beerId") UUID beerId, @RequestBody BeerDTO beerDTO) {
+    public ResponseEntity<Void> updateBeer(@PathVariable("beerId") UUID beerId,@Validated @RequestBody BeerDTO beerDTO) {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
