@@ -13,11 +13,11 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Beer {
+public class BeerDTO {
 
     private UUID id;
 
-    private Integer version;
+    private Long version;
 
     private OffsetDateTime createdDate;
 

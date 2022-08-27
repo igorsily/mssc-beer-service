@@ -5,13 +5,13 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-public class BeerPagedList extends PageImpl<Beer> {
+public class BeerPagedList extends PageImpl<BeerDTO> {
 
-    public BeerPagedList(List<Beer> content, Pageable pageable, long total) {
+    public BeerPagedList(List<BeerDTO> content, Pageable pageable, long total) {
         super(content, pageable, total);
     }
 
-    public BeerPagedList(List<Beer> content) {
+    public BeerPagedList(List<BeerDTO> content) {
         super(content);
     }
 }

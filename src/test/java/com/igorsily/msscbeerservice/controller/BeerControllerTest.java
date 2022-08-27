@@ -1,7 +1,7 @@
 package com.igorsily.msscbeerservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.igorsily.msscbeerservice.model.Beer;
+import com.igorsily.msscbeerservice.model.BeerDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -34,9 +34,9 @@ class BeerControllerTest {
     @Test
     void saveBeer() throws Exception {
 
-        Beer beer = Beer.builder().build();
+        BeerDTO beerDTO = BeerDTO.builder().build();
 
-        String beerJson = objectMapper.writeValueAsString(beer);
+        String beerJson = objectMapper.writeValueAsString(beerDTO);
 
         mockMvc.perform(MockMvcRequestBuilders
                         .post("/api/v1/beers/")
@@ -48,9 +48,9 @@ class BeerControllerTest {
     @Test
     void updateBeer() throws Exception {
 
-        Beer beer = Beer.builder().build();
+        BeerDTO beerDTO = BeerDTO.builder().build();
 
-        String beerJson = objectMapper.writeValueAsString(beer);
+        String beerJson = objectMapper.writeValueAsString(beerDTO);
 
 
         mockMvc.perform(MockMvcRequestBuilders
