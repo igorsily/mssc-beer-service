@@ -2,6 +2,7 @@ package com.igorsily.msscbeerservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.igorsily.msscbeerservice.model.BeerDTO;
+import com.igorsily.msscbeerservice.model.BeerStyleEnum;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -9,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -34,7 +36,7 @@ class BeerControllerTest {
     @Test
     void saveBeer() throws Exception {
 
-        BeerDTO beerDTO = BeerDTO.builder().build();
+        BeerDTO beerDTO = getValidBeerDTO();
 
         String beerJson = objectMapper.writeValueAsString(beerDTO);
 
@@ -48,7 +50,7 @@ class BeerControllerTest {
     @Test
     void updateBeer() throws Exception {
 
-        BeerDTO beerDTO = BeerDTO.builder().build();
+        BeerDTO beerDTO = getValidBeerDTO();
 
         String beerJson = objectMapper.writeValueAsString(beerDTO);
 
@@ -58,5 +60,14 @@ class BeerControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(beerJson))
                 .andExpect(status().isNoContent());
+    }
+
+     BeerDTO getValidBeerDTO(){
+        return  BeerDTO.builder()
+                .beerName("MY BEER")
+                .beerStyle(BeerStyleEnum.IPA)
+                .price(new BigDecimal("11.99"))
+                .upc(124512645611L)
+                .build();
     }
 }
